@@ -1,7 +1,19 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { CostumersService } from './costumers.service';
 
 @Controller('costumers')
 export class CostumersController {
-  constructor(private readonly costumersService: CostumersService) {}
+  @Get()
+  getCostumers(): object {
+    return {
+      costumers: 'costumers',
+    };
+  }
+
+  @Get(':idCostumer')
+  getCostumer(@Param('idCostumer') idCostumer: string): object {
+    return {
+      idCostumer: idCostumer,
+    };
+  }
 }
